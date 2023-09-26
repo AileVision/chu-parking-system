@@ -13,6 +13,6 @@ class EntreeSeeder extends Seeder
      */
     public function run(): void
     {
-        Entree::factory(20)->create();
+        Entree::factory(5)->create();
     }
 }

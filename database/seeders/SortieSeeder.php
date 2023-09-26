@@ -13,6 +13,6 @@ class SortieSeeder extends Seeder
      */
     public function run(): void
     {
-        Sortie::factory(20)->create();
+        Sortie::factory(5)->create();
     }
 }

@@ -13,6 +13,6 @@ class MotoSeeder extends Seeder
      */
     public function run(): void
     {
-        Moto::factory(20)->create();
+        Moto::factory(5)->create();
     }
 }

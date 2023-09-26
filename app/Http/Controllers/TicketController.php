@@ -13,7 +13,8 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        $tickets = Ticket::pagiante(10);
+        return view('tickets.index', compact('tickets'));
     }
 
     /**
@@ -21,7 +22,7 @@ class TicketController extends Controller
      */
     public function create()
     {
-        //
+        return view('tickets.create');
     }
 
     /**
@@ -29,7 +30,8 @@ class TicketController extends Controller
      */
     public function store(StoreTicketRequest $request)
     {
-        //
+        Ticket::create($request->all());
+        return redirect()->route('tickets.index')->with('success', 'Ticket ajouté avec succès');
     }
 
     /**
@@ -37,7 +39,7 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        //
+        return view('tickets.show', compact('ticket'));
     }
 
     /**
@@ -45,7 +47,7 @@ class TicketController extends Controller
      */
     public function edit(Ticket $ticket)
     {
-        //
+        return view('tickets.edit', compact('ticket'));
     }
 
     /**
@@ -53,7 +55,8 @@ class TicketController extends Controller
      */
     public function update(UpdateTicketRequest $request, Ticket $ticket)
     {
-        //
+        $ticket->update($request->all());
+        return redirect()->route('tickets.index')->with('success', 'Ticket modifié avec succès');
     }
 
     /**
@@ -61,6 +64,7 @@ class TicketController extends Controller
      */
     public function destroy(Ticket $ticket)
     {
-        //
+        $ticket->delete();
+        return redirect()->route('tickets.index')->with('success', 'Ticket suprimé avec succès');
     }
 }

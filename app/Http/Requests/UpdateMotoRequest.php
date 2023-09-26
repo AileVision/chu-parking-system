@@ -11,7 +11,7 @@ class UpdateMotoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,16 @@ class UpdateMotoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'immatriculation' => 'required',
+            'tel_proprietaire' => 'required|numeric'
+        ];
+    }
+
+    public function messages(){
+        return [
+            'immatriculation.required' => 'L\'immatriculation est obligatoire',
+            'tel_proprietaire.required' => 'Le numéro de téléphone est obligatoire',
+            'tel_proprietaire.numeric' => 'Le numéro de téléphone doit etre un nombre'
         ];
     }
 }

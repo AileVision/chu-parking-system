@@ -11,7 +11,7 @@ class UpdateSortieRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,14 @@ class UpdateSortieRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'user_id.exists' => 'Cet utilisateur n\' existe pas.',
+            'user_id.required' => 'L\'utilisateur est obligatoire.',
+            'moto_id.exists' => 'Cette moto n\' existe pas.',
+            'moto_id.required' => 'La moto est obligatoire.',
+            'ticket_number.exists' => 'Ce ticket n\' existe pas.',
+            'sortie_datetime.required' => 'La date de sortie est obligatoire.',
+            'total_amount.required' => 'Le montant est obligatoire.',
+            'total_amount.numeric' => 'Le montant doit etre un nombre.'
         ];
     }
 }

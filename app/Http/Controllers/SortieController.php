@@ -13,7 +13,8 @@ class SortieController extends Controller
      */
     public function index()
     {
-        //
+        $sorties = Sortie::paginate(10);
+        return view('sorties.index', compact('sorties'));
     }
 
     /**
@@ -21,7 +22,7 @@ class SortieController extends Controller
      */
     public function create()
     {
-        //
+        return view('sorties.create');
     }
 
     /**
@@ -29,7 +30,8 @@ class SortieController extends Controller
      */
     public function store(StoreSortieRequest $request)
     {
-        //
+        Sortie::create($request->all());
+        return redirect()->route('sorties.index')->with('success', 'Sortie ajoutée avec succès');
     }
 
     /**
@@ -37,7 +39,7 @@ class SortieController extends Controller
      */
     public function show(Sortie $sortie)
     {
-        //
+        return view('sorties.show', compact('sortie'));
     }
 
     /**
@@ -45,7 +47,7 @@ class SortieController extends Controller
      */
     public function edit(Sortie $sortie)
     {
-        //
+        return view('sorties.edit', compact('sortie'));
     }
 
     /**
@@ -53,7 +55,8 @@ class SortieController extends Controller
      */
     public function update(UpdateSortieRequest $request, Sortie $sortie)
     {
-        //
+        $sortie->update($request->all());
+        return redirect()->route('sorties.index')->with('success', 'Sortie modifié avec succès');
     }
 
     /**
@@ -61,6 +64,7 @@ class SortieController extends Controller
      */
     public function destroy(Sortie $sortie)
     {
-        //
+        $sortie->delete();
+        return redirect()->route('sorties.index')->with('success', 'Sortie suprimé avec succès');
     }
 }

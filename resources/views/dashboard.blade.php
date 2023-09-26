@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-xl">
-				    
+		    
     <div class="row g-4 mb-4">
         <div class="col-6 col-lg-3">
             <div class="app-card app-card-stat shadow-sm h-100">
@@ -55,8 +55,10 @@
     </div><!--//row-->
 
     <div class="row g-3 mb-4 align-items-center justify-content-between">
-        <div class="col-auto">
-            <h1 class="app-page-title mb-0">Entrées et sorties</h1>
+        <div class="col-auto">						    
+            <a class="btn app-btn-primary" href="{{ route('motos.create') }}">
+                Ajouter une moto
+            </a>
         </div>
         <div class="col-auto">
              <div class="page-utilities">
@@ -88,7 +90,7 @@
                             <path fill-rule="evenodd" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
                             <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
                             </svg>
-                            Entrée
+                            OK
                         </a>
                     </div>
                 </div><!--//row-->
@@ -102,7 +104,7 @@
         <a class="flex-sm-fill text-sm-center nav-link" id="orders-pending-tab" data-bs-toggle="tab" href="#orders-pending" role="tab" aria-controls="orders-pending" aria-selected="false">En attente</a>
         <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab" href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">Suprimés</a>
     </nav>	
-    
+
     <div class="tab-content" id="orders-table-tab-content">
         <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
             <div class="app-card app-card-orders-table shadow-sm mb-2">
@@ -364,6 +366,6 @@
             </div><!--//app-card-->
         </div><!--//tab-pane-->
     </div><!--//tab-content-->
-    
+
 </div><!--//container-fluid-->
 @endsection

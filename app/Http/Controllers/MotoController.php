@@ -13,8 +13,7 @@ class MotoController extends Controller
      */
     public function index()
     {
-        $motos = Moto::all();
-        // dd($motos);
+        $motos = Moto::orderBy('id', 'desc')->paginate(10);
         return view('motos.index', compact('motos'));
     }
 
@@ -31,9 +30,10 @@ class MotoController extends Controller
      */
     public function store(StoreMotoRequest $request)
     {
+        // dd($request->all());
+        
         Moto::create($request->all());
-
-        return redirect()->route('motos.index');
+        return redirect()->route('motos.index')->with('success', 'Moto ajouté avec succès');
     }
 
     /**
@@ -58,8 +58,7 @@ class MotoController extends Controller
     public function update(UpdateMotoRequest $request, Moto $moto)
     {
         $moto->update($request->all());
-
-        return redirect()->route('motos.index');
+        return redirect()->route('motos.index')->with('success', 'Moto modifié avec succès');
     }
 
     /**
@@ -68,7 +67,6 @@ class MotoController extends Controller
     public function destroy(Moto $moto)
     {
         $moto->delete();
-
-        return redirect()->route('motos.index');
+        return redirect()->route('motos.index')->with('success', 'Moto supprimé avec succès');
     }
 }

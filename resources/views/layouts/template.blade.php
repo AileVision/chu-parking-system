@@ -29,9 +29,12 @@
     </header><!--//app-header-->
     
     <div class="app-wrapper">
+        
 	    
 	    <div class="app-content pt-3 p-md-3 p-lg-4">
-		    @yield('content')
+            <div class="container-xl">
+		        @yield('content')
+            </div>
 	    </div><!--//app-content-->
 	    
 	    @include('layouts.footer')

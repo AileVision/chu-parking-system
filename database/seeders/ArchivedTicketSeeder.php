@@ -13,6 +13,6 @@ class ArchivedTicketSeeder extends Seeder
      */
     public function run(): void
     {
-        ArchivedTicket::factory(20)->create();
+        ArchivedTicket::factory(5)->create();
     }
 }

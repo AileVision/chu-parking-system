@@ -13,6 +13,6 @@ class HistoriqueSeeder extends Seeder
      */
     public function run(): void
     {
-        Historique::factory(20)->create();
+        Historique::factory(5)->create();
     }
 }

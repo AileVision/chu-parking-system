@@ -23,14 +23,15 @@ class StoreMotoRequest extends FormRequest
     {
         return [
             'immatriculation' => 'required',
-            'tel_proprietaire' => 'required'
+            'tel_proprietaire' => 'required|numeric'
         ];
     }
 
     public function messages(){
         return [
-            'immatriculation.required' => 'Le champ immatriculation est obligatoire',
-            'tel_proprietaire.required' => 'Le champ teléphone est obligatoire'
+            'immatriculation.required' => 'L\'immatriculation est obligatoire',
+            'tel_proprietaire.required' => 'Le numéro de téléphone est obligatoire',
+            'tel_proprietaire.numeric' => 'Le numéro de téléphone doit etre un nombre'
         ];
     }
 }

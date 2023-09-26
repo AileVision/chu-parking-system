@@ -8,5 +8,7 @@
 </head>
 <body>
     <h1>show paseesss</h1>
+    @dump($entree);
+    
 </body>
 </html>

@@ -13,7 +13,8 @@ class EntreeController extends Controller
      */
     public function index()
     {
-        //
+        $entrees = Entree::paginate(10);
+        return view('entrees.index', compact('entrees'));
     }
 
     /**
@@ -21,7 +22,7 @@ class EntreeController extends Controller
      */
     public function create()
     {
-        //
+        return view('entrees.create');
     }
 
     /**
@@ -29,7 +30,8 @@ class EntreeController extends Controller
      */
     public function store(StoreEntreeRequest $request)
     {
-        //
+        Entree::create($request->all());
+        return redirect()->route('entrees.index')->with('success', 'Entrée ajoutée avec succès');
     }
 
     /**
@@ -37,7 +39,8 @@ class EntreeController extends Controller
      */
     public function show(Entree $entree)
     {
-        //
+        return view('entrees.show', compact('entree'));
+        
     }
 
     /**
@@ -45,7 +48,7 @@ class EntreeController extends Controller
      */
     public function edit(Entree $entree)
     {
-        //
+        return view('entrees.edit', compact('entree'));
     }
 
     /**
@@ -53,7 +56,8 @@ class EntreeController extends Controller
      */
     public function update(UpdateEntreeRequest $request, Entree $entree)
     {
-        //
+        $entree->update($request->all());
+        return redirect()->route('entrees.index')->with('success', 'Entrée modifié avec succès');
     }
 
     /**
@@ -61,6 +65,7 @@ class EntreeController extends Controller
      */
     public function destroy(Entree $entree)
     {
-        //
+        $entree->delete();
+        return redirect()->route('entrees.index')->with('success', 'Entrée suprimé avec succès');
     }
 }

@@ -10,7 +10,7 @@ class Moto extends Model
     use HasFactory;
 
     protected $fillable = [
-        'immatricultion',
+        'immatriculation',
         'tel_proprietaire'
     ];
     
