@@ -17,13 +17,22 @@
             </div><!--//app-card-header-->
             <div class="app-card-body p-3 p-lg-4">
                 <div class="table-responsive">
+                @if (session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
                     <table class="table table-borderless mb-0">
+                        
                         <thead>
                             <tr>
                                 <th class="meta">#</th>
                                 <th class="meta stat-cell">Immatric.</th>
                                 <th class="meta stat-cell">Tel proprietaire</th>
-                                <th class="meta stat-cell colspan="3">Action</th>
+                                <th class="meta stat-cell" colspan="2">Action</th>
+                                <th class="meta stat-cell"></th>
+                                <th class="meta stat-cell"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,8 +41,8 @@
                                     <td class="meta">{{ $moto->id }}</td>
                                     <td class="stat-cell">{{ $moto->immatriculation }}</td>
                                     <td class="stat-cell">{{ $moto->tel_proprietaire }}</td>
-                                    <td class="stat-cell "><a class="btn-sm" href="{{ route('motos.show', $moto->id) }}"><i class="fa-regular fa-eye"></i></a></td>
-                                    <td class="stat-cell"><a class="btn-sm" href="{{ route('motos.edit', $moto->id) }}"><i class="fa-regular fa-pen-to-square"></i></a></td>
+                                    <td class="stat-cell "><a class="btn-sm" href="{{ route('motos.show', $moto) }}"><i class="fa-solid fa-print"></i></a></td>
+                                    <td class="stat-cell"><a class="btn-sm" href="{{ route('motos.edit', $moto) }}"><i class="fa-regular fa-pen-to-square"></i></a></td>
                                     <td class="stat-cell">
                                         <form action="{{ route('motos.destroy', $moto->id) }}" method="post">
                                             @csrf

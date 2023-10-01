@@ -35,7 +35,9 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::resource('entrees', EntreeController::class);
-Route::resource('sorties', SortieController::class);
+// Route::resource('sorties', SortieController::class);
+Route::get('sorties.create/{moto}', [SortieController::class, 'create'])->name('sorties.create');
+Route::post('sorties.store', [SortieController::class, 'store'])->name('sorties.store');
 Route::resource('tickets', TicketController::class);
 Route::resource('motos', MotoController::class);
 Route::resource('historiques', HistoriqueController::class);

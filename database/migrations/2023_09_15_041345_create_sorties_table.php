@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('moto_id')->constrained()->onDelete('cascade');
-            $table->string('ticket_number');
-            $table->dateTime('sortie_datetime');
-            $table->decimal('total_amount', 10, 2);
+            $table->string('ticket_number'); // numero de ticket 
+            $table->dateTime('sortie_datetime'); // date de sortie
+            $table->decimal('total_amount', 10, 2); // montant total à payer
             $table->timestamps();
         });
     }

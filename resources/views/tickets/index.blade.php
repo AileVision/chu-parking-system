@@ -32,7 +32,7 @@
                                     <td class="meta">{{ $moto->id }}</td>
                                     <td class="stat-cell">{{ $moto->immatriculation }}</td>
                                     <td class="stat-cell">{{ $moto->tel_proprietaire }}</td>
-                                    <td class="stat-cell "><a class="btn-sm" href="{{ route('motos.show', $moto->id) }}"><i class="fa-regular fa-eye"></i></a></td>
+                                    <td class="stat-cell"><a class="btn-sm" href="{{ route('motos.show', $moto->id) }}"><i class="fa-regular fa-eye"></i><i class="fa-solid fa-motorcycle"></i></a></td>
                                     <td class="stat-cell"><a class="btn-sm" href="{{ route('motos.edit', $moto->id) }}"><i class="fa-regular fa-pen-to-square"></i></a></td>
                                     <td class="stat-cell">
                                         <form action="{{ route('motos.destroy', $moto->id) }}" method="post">
@@ -51,6 +51,10 @@
     </div><!--//col-->
 
     <!-- Modal enregistrer l'entrée d'un engin -->
+
+    <!-- Button trigger modal -->
+  
+  
 
 
 @endsection

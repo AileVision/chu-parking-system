@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Moto;
+use App\Models\Entree;
 use App\Models\Sortie;
 use App\Http\Requests\StoreSortieRequest;
 use App\Http\Requests\UpdateSortieRequest;
+use Carbon\Carbon;
+use PhpParser\Node\Stmt\ElseIf_;
 
 class SortieController extends Controller
 {
@@ -20,9 +24,27 @@ class SortieController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create( Moto $moto)
     {
-        return view('sorties.create');
+        $entree = Entree::where('moto_id', $moto->id)->first();
+
+        $entree_datetime = Carbon::parse($entree->entree_datetime);
+        $sortie_datetime = Carbon::parse(now());
+        $total_duree = $sortie_datetime->diffInHours($entree_datetime);
+        // nombre de tranches
+
+        $nombre_tranche = $total_duree / 24;
+        // montant total à payer
+        $total_amount =  intdiv($total_duree, 24) * 50;
+
+      
+        if ($nombre_tranche < 1) {
+            $total_amount = 50;
+        } elseif ($total_duree % 1440 != 0) {
+            $total_amount += 50;
+        }
+        
+        return view('sorties.create', compact(['moto', 'entree', 'total_amount']));
     }
 
     /**
@@ -30,7 +52,7 @@ class SortieController extends Controller
      */
     public function store(StoreSortieRequest $request)
     {
-        Sortie::create($request->all());
+        dd('infos sauvegardée');
         return redirect()->route('sorties.index')->with('success', 'Sortie ajoutée avec succès');
     }
 
@@ -39,6 +61,7 @@ class SortieController extends Controller
      */
     public function show(Sortie $sortie)
     {
+        
         return view('sorties.show', compact('sortie'));
     }
 

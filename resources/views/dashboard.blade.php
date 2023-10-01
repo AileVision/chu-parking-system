@@ -113,86 +113,38 @@
                         <table class="table app-table-hover mb-0 text-left">
                             <thead>
                                 <tr>
-                                    <th class="cell">N° Ticket</th>
+                                    <th class="cell">N° ID</th>
                                     <th class="cell">Immatriculation</th>
                                     <th class="cell">Contact</th>
                                     <th class="cell">Date</th>
                                     <th class="cell">Status</th>
-                                    <th class="cell">Durée</th>
+                                    {{-- <th class="cell">Montant</th> --}}
+                                    {{-- <th class="cell">Durée</th> --}}
                                     <th class="cell" colspan="3">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($motos as $moto)
                                 <tr>
-                                    <td class="cell">#15346</td>
-                                    <td class="cell"><span class="truncate">Lorem ipsum dolor sit amet eget volutpat erat</span></td>
-                                    <td class="cell">John Sanders</td>
-                                    <td class="cell"><span>17 Oct</span><span class="note">2:16 PM</span></td>
-                                    <td class="cell"><span class="badge bg-success">Paid</span></td>
-                                    <td class="cell">$259.35</td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">Voir</a></td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">Modif</a></td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">Supr</a></td>
+                                    <td class="cell">{{ $moto->id }}</td>
+                                    <td class="cell"><span class="truncate">{{ $moto->immatriculation }}</span></td>
+                                    <td class="cell">{{ $moto->tel_proprietaire }}</td>
+                                    <td class="cell">{{ $moto->created_at }}</td>
+                                    <td class="cell"><span class="badge bg-success">Payé</span></td>
+                                    {{-- <td class="cell">$259.35</td> --}}
+                                    {{-- <td class="cell">10h36</td> --}}
+                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="{{ route('motos.show', $moto) }}">Ticket entrée</a></td>
+                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="{{ route('sorties.create', $moto) }}">Ticket sortie</a></td>
+                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="{{ route('motos.edit', $moto) }}"><i class="fa-regular fa-pen-to-square"></i></a></td>
+                                    <td class="cell"><form action="{{ route('motos.destroy', $moto->id) }}" method="post">
+                                        <form action="{{ route('motos.destroy', $moto->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn-sm border-0 bg-transparent"><i class="fa-regular fa-trash-can"></i></button>
+                                        </form>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td class="cell">#15345</td>
-                                    <td class="cell"><span class="truncate">Consectetur adipiscing elit</span></td>
-                                    <td class="cell">Dylan Ambrose</td>
-                                    <td class="cell"><span class="cell-data">16 Oct</span><span class="note">03:16 AM</span></td>
-                                    <td class="cell"><span class="badge bg-warning">Pending</span></td>
-                                    <td class="cell">$96.20</td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">Voir</a></td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">Modif</a></td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">Supr</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="cell">#15344</td>
-                                    <td class="cell"><span class="truncate">Pellentesque diam imperdiet</span></td>
-                                    <td class="cell">Teresa Holland</td>
-                                    <td class="cell"><span class="cell-data">16 Oct</span><span class="note">01:16 AM</span></td>
-                                    <td class="cell"><span class="badge bg-success">Paid</span></td>
-                                    <td class="cell">$123.00</td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">Voir</a></td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">Modif</a></td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">Supr</a></td>
-                                </tr>
-                                
-                                <tr>
-                                    <td class="cell">#15343</td>
-                                    <td class="cell"><span class="truncate">Vestibulum a accumsan lectus sed mollis ipsum</span></td>
-                                    <td class="cell">Jayden Massey</td>
-                                    <td class="cell"><span class="cell-data">15 Oct</span><span class="note">8:07 PM</span></td>
-                                    <td class="cell"><span class="badge bg-success">Paid</span></td>
-                                    <td class="cell">$199.00</td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">Voir</a></td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">Modif</a></td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">Supr</a></td>
-                                </tr>
-                                
-                                <tr>
-                                    <td class="cell">#15342</td>
-                                    <td class="cell"><span class="truncate">Justo feugiat neque</span></td>
-                                    <td class="cell">Reina Brooks</td>
-                                    <td class="cell"><span class="cell-data">12 Oct</span><span class="note">04:23 PM</span></td>
-                                    <td class="cell"><span class="badge bg-danger">Cancelled</span></td>
-                                    <td class="cell">$59.00</td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">Voir</a></td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">Modif</a></td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">Supr</a></td>
-                                </tr>
-                                
-                                <tr>
-                                    <td class="cell">#15341</td>
-                                    <td class="cell"><span class="truncate">Morbi vulputate lacinia neque et sollicitudin</span></td>
-                                    <td class="cell">Raymond Atkins</td>
-                                    <td class="cell"><span class="cell-data">11 Oct</span><span class="note">11:18 AM</span></td>
-                                    <td class="cell"><span class="badge bg-success">Paid</span></td>
-                                    <td class="cell">$678.26</td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">Voir</a></td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">Modif</a></td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">Supr</a></td>
-                                </tr>
-
+                                @endforeach
                             </tbody>
                         </table>
                     </div><!--//table-responsive-->

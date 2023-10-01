@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
-    <title>Page - Administration</title>
+    <title>Administration</title>
     
     <!-- Meta -->
     <meta charset="utf-8">

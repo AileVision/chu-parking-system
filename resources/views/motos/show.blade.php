@@ -7,6 +7,22 @@
     <title>Teste</title>
 </head>
 <body>
-    <h1>show paseesss</h1>
+    
+    <ul>
+        <li>{{ $moto->id }}</li>
+        <li>{{ $moto->immatriculation }}</li>
+        <li>{{ $moto->tel_proprietaire }}</li>
+    </ul>
+    <br>
+    <hr>
+    <br>
+
+    <ul>
+        <li>{{ $entree->id }}</li>
+        <li>{{ $entree->user_id }}</li>
+        <li>{{ $entree->moto_id }}</li>
+        <li>{{ $entree->entree_datetime }}</li>
+    </ul>
+    
 </body>
 </html>

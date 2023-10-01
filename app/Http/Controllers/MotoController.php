@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Moto;
+use App\Models\Entree;
 use App\Http\Requests\StoreMotoRequest;
 use App\Http\Requests\UpdateMotoRequest;
 
@@ -13,7 +14,7 @@ class MotoController extends Controller
      */
     public function index()
     {
-        $motos = Moto::orderBy('id', 'desc')->paginate(10);
+        $motos = Moto::orderBy('id', 'desc')->paginate(20);
         return view('motos.index', compact('motos'));
     }
 
@@ -30,9 +31,8 @@ class MotoController extends Controller
      */
     public function store(StoreMotoRequest $request)
     {
-        // dd($request->all());
-        
         Moto::create($request->all());
+
         return redirect()->route('motos.index')->with('success', 'Moto ajouté avec succès');
     }
 
@@ -41,7 +41,11 @@ class MotoController extends Controller
      */
     public function show(Moto $moto)
     {
-        return view('motos.show', compact('moto'));
+        // Récupère l'entrée de la moto selon l'id
+        $entree = Entree::where('moto_id', $moto->id)->first();
+        // Récupère la moto
+        $moto = Moto::find($moto->id);
+        return view('motos.show', compact('moto', 'entree'));
     }
 
     /**

@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Events\NouvelleMotoCree;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Moto extends Model
 {
@@ -13,6 +14,15 @@ class Moto extends Model
         'immatriculation',
         'tel_proprietaire'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($moto) {
+            event(new NouvelleMotoCree($moto));
+        });
+    }
     
     public function entries(){
         return $this->hasMany(Entree::class);

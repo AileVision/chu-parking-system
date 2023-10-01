@@ -30,8 +30,8 @@ class EntreeController extends Controller
      */
     public function store(StoreEntreeRequest $request)
     {
-        Entree::create($request->all());
-        return redirect()->route('entrees.index')->with('success', 'Entrée ajoutée avec succès');
+        // Entree::create($request->all());
+        // return redirect()->route('entrees.index')->with('success', 'Entrée ajouté avec succès');
     }
 
     /**
@@ -39,6 +39,7 @@ class EntreeController extends Controller
      */
     public function show(Entree $entree)
     {
+        
         return view('entrees.show', compact('entree'));
         
     }

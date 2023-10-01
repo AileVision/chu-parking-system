@@ -4,7 +4,7 @@
     <div class="row g-4 settings-section">
       <div class="col-12 col-md-8">
         <div class="app-card app-card-settings shadow-sm p-4">
-    
+          <h4></h4>
           <div class="app-card-body">
             <form class="settings-form" action="{{ route('motos.store') }}" method="POST">
               @csrf
