@@ -24,7 +24,8 @@ class StoreSortieRequest extends FormRequest
         return [
             'user_id' => 'required|exists:users,id',
             'moto_id'=> 'required|exists:motos,id',
-            'ticket_number' => 'required|exists:tickets,id',
+            // 'ticket_number' => 'required|exists:tickets,ticket_number',
+            'ticket_number' => 'required',
             'sortie_datetime' => 'required|date',
             'total_amount' => 'required|numeric'
         ];
@@ -36,7 +37,8 @@ class StoreSortieRequest extends FormRequest
             'user_id.required' => 'L\'utilisateur est obligatoire.',
             'moto_id.exists' => 'Cette moto n\' existe pas.',
             'moto_id.required' => 'La moto est obligatoire.',
-            'ticket_number.exists' => 'Ce ticket n\' existe pas.',
+            //'ticket_number.exists' => 'Ce ticket n\' existe pas.',
+            'ticket_number.required' => 'Le numéro de ticket est obligatoire.',
             'sortie_datetime.required' => 'La date de sortie est obligatoire.',
             'total_amount.required' => 'Le montant est obligatoire.',
             'total_amount.numeric' => 'Le montant doit etre un nombre.'

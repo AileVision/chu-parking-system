@@ -24,8 +24,9 @@ class SortieController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create( Moto $moto)
+    public function create(Moto $moto)
     {
+        $user = auth()->user();
         $entree = Entree::where('moto_id', $moto->id)->first();
 
         $entree_datetime = Carbon::parse($entree->entree_datetime);
@@ -43,8 +44,8 @@ class SortieController extends Controller
         } elseif ($total_duree % 1440 != 0) {
             $total_amount += 50;
         }
-        
-        return view('sorties.create', compact(['moto', 'entree', 'total_amount']));
+        // dd($total_amount);
+        return view('sorties.create', compact(['moto', 'entree', 'total_amount', 'user']));
     }
 
     /**
@@ -52,7 +53,8 @@ class SortieController extends Controller
      */
     public function store(StoreSortieRequest $request)
     {
-        dd('infos sauvegardée');
+        dd($request->all());
+        Sortie::create($request->all());
         return redirect()->route('sorties.index')->with('success', 'Sortie ajoutée avec succès');
     }
 
